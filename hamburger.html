@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="relative">
+        <!-- Hamburger Button -->
+        <button id="hamburger" class="group flex h-20 w-20 cursor-pointer items-center justify-center rounded-3xl bg-white p-2 hover:bg-slate-200 z-50 relative">
+            <div class="space-y-2">
+                <span class="block h-1 w-10 origin-center rounded-full bg-slate-500 transition-transform ease-in-out group-hover:translate-y-1.5 group-hover:rotate-45"></span>
+                <span class="block h-1 w-8 origin-center rounded-full bg-orange-500 transition-transform ease-in-out group-hover:w-10 group-hover:-translate-y-1.5 group-hover:-rotate-45"></span>
+            </div>
+        </button>
+
+        <!-- Navigation Menu -->
+        <div id="nav-menu" class="fixed inset-0 bg-white transform-translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="p-8 mt-20">
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-2xl text-gray-800 hover:text-orange-500 transition-colors">Home</a></li>
+                    <li><a href="#" class="text-2xl text-gray-800 hover:text-orange-500 transition-colors">About</a></li>
+                    <li><a href="#" class="text-2xl text-gray-800 hover:text-orange-500 transition-colors">Services</a></li>
+                    <li><a href="#" class="text-2xl text-gray-800 hover:text-orange-500 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+let isOpen = false;
+hamburger.addEventListener('click',()=>{
+    isOpen = !isOpen;
+    if(isOpen) {
+        navMenu.classList.remove('-translate-x-full');
+    } else {
+        navMenu.classList.add('-translate-x-full');
+    }
+});
+</script>
+</body>
+</html>

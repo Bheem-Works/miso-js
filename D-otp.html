@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button1 {
+  display: none;
+  background-color: white; 
+  color: black; 
+  border: 2px solid #04AA6D;
+  width:100%
+}
+
+.button1:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+        .button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+  width: 100%;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+
+
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gray-50">
+    <div class="w-full max-w-md p-10 space-y-6 bg-white rounded-lg shadow-lg">
+        <form class="space-y-4">
+            <p class="text-2xl font-semibold text-gray-800">OTP Generator</p>
+            
+            <div class="space-y-2">
+                <input 
+                    type="email" 
+                    placeholder="Enter your email" 
+                    class=" input-miso w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    required
+                > 
+                <button class="button button1">VERIFY</button>
+                <button class="button button2">Send OTP</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

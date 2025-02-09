@@ -1,13 +1,13 @@
 // lets's create a functions 
 
-function getRandomValues (arr,count) {
+function getRandomValues(arr,count) {
     result = [];
     for(let i = 0; i<count; i++) {
         const randomIndex = Math.floor(Math.random() * arr.length);
         result.push(arr[randomIndex]);
     }
     return result;
-}
+};
 
 
 
@@ -22,7 +22,7 @@ function generateOTP(){
         ...getRandomValues(numbers,2)
     ];
     return otp.join('');
-}
+};
     
 document.querySelector('.otp-button').addEventListener('click',()=>{
   document.getElementById('demo').innerHTML = generateOTP();
