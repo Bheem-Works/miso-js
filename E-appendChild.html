@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AppendChild</title>
+  </head>
+  <body>
+    <div id="demo">
+      <p>Hello miso</p>
+    </div>
+    <script>
+      let newPara = document.createElement("p");
+      newPara.textContent = "im not a miso";
+      let container = document.getElementById("demo");
+      container.appendChild(newPara);
+    </script>
+  </body>
+</html>
