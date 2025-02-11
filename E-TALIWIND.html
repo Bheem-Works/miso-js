@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text Example</title>
+</head>
+<body>
+
+    <input type="text" id="myInput" value="Hello, Bheem!">
+    <button onclick="copyText()">Copy</button>
+    <p id="msg"></p>
+
+    
+    <script>
+        function copyText() {
+            let inputField = document.getElementById('myInput')
+            let text = inputField.value;
+             
+            navigator.clipboard.writeText(text).then (()=>{
+                document.getElementById('msg').innerHTML = "man";
+            }).catch(err=>{
+                console.error(err);
+                
+            });
+            
+        }
+    </script>
+
+</body>
+</html>
