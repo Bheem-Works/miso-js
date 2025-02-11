@@ -6,14 +6,27 @@
     <title>AppendChild</title>
   </head>
   <body>
-    <div id="demo">
-      <p>Hello miso</p>
-    </div>
+    <input type="text" placeholder="enter the tasks" id="taskInput" />
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+
     <script>
-      let newPara = document.createElement("p");
-      newPara.textContent = "im not a miso";
-      let container = document.getElementById("demo");
-      container.appendChild(newPara);
+      function addTask() {
+        let taskInput = document.getElementById("taskInput");
+        let taskText = taskInput.value.trim();
+
+        if (taskText === "") {
+          alert("Please enter the tasks");
+          return;
+        }
+
+        let li = document.createElement("p");
+        li.textContent = taskText;
+
+        let taskList = document.getElementById("taskList");
+        taskList.appendChild(li);
+        taskInput.value = "";
+      }
     </script>
   </body>
 </html>
