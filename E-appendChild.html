@@ -8,6 +8,7 @@
   <body>
     <input type="text" placeholder="enter the tasks" id="taskInput" />
     <button onclick="addTask()">Add Task</button>
+    <button onclick="remove()">Remove Button</button>
     <ul id="taskList"></ul>
 
     <script>
@@ -26,6 +27,9 @@
         let taskList = document.getElementById("taskList");
         taskList.appendChild(li);
         taskInput.value = "";
+      }
+      function remove() {
+        taskList.remove();
       }
     </script>
   </body>

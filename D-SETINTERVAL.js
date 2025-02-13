@@ -1,16 +1,14 @@
-let arrays = ["vim", "bhadhur", "magar"];
+let array = ["miso", "bhadhur", "magar"];
 let currentIndex = 0;
+// create interval id
 
 let intervalId = setInterval(() => {
-  // Get current name and log it
-  console.log("Current name:", arrays[currentIndex]);
+  currentIndex = (currentIndex + 1) % array.length;
+  console.log("Current Index:", array[currentIndex]);
+}, 2000);
 
-  // Update index for next iteration
-  currentIndex = (currentIndex + 1) % arrays.length;
-}, 2000); // Changed to 2000ms (2 seconds)
-
-// Stop after 20 seconds
+// lets stop it
 setTimeout(() => {
   clearInterval(intervalId);
-  console.log("it is stopped");
+  console.log("it is stopped man");
 }, 8000);
