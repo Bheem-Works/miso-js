@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz In JS</title>
+  </head>
+  <body>
+    <div class="firstId">
+      <label>What is 1 + 1?</label> <br /><br />
+
+      <label> <input type="radio" name="quiz" value="1" /> 1 </label>
+      <label> <input type="radio" name="quiz" value="2" /> 2 </label>
+      <label> <input type="radio" name="quiz" value="3" /> 3 </label>
+      <label> <input type="radio" name="quiz" value="4" /> 4 </label>
+      <br /><br />
+    </div>
+    <label>What is the 4+4 </label> <br />
+    <br />
+    <label> <input type="radio" name="Dosro" value="1" /> 1 </label>
+    <label> <input type="radio" name="Dosro" value="2" /> 2 </label>
+    <label> <input type="radio" name="Dosro" value="8" /> 8 </label>
+    <label> <input type="radio" name="Dosro" value="4" /> 4 </label>
+
+    <br />
+    <br />
+
+    <button class="submit">Submit Your Answer</button>
+
+    <script>
+      document.querySelector(".submit").addEventListener("click", () => {
+        let selectedAnswer = document.querySelector(
+          'input[name="quiz"]:checked' //Selected by using the attribute selectors;
+        );
+        let dosroAnswer = document.querySelector('input[name="Dosro"]:checked');
+        console.log(dosroAnswer);
+
+        // if (!selectedAnswer) {
+        //   alert("Please select an answer!");
+        //   return;
+        // }
+
+        let answer = Number(selectedAnswer?.value); // Convert value to number
+        let secondAnswer = Number(dosroAnswer?.value);
+        if (answer == 2) {
+          alert("Great! You did so well.");
+        } else if (secondAnswer == 8) {
+          alert("Great! You did so well.");
+        } else {
+          alert("Hahaha! Go to play group.");
+        }
+      });
+    </script>
+  </body>
+</html>

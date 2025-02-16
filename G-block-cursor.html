@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>block cursor</title>
+
+    <style>
+      body {
+        text-align: center;
+        margin-top: 100px;
+      }
+      .unblock {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: orange;
+        cursor: not-allowed;
+        visibility: hidden;
+        z-index: -9999;
+      }
+      .blockCursor {
+        background-color: rgb(39, 39, 208);
+        padding: 5px 5px;
+        margin: 10px;
+        font-size: 14px;
+        border: none;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="blockCursor" onclick="blockUser()">
+      Click here to block the cursor
+    </button>
+    <div class="unblock" id="overlay" onclick="unblockCursor()"></div>
+
+    <script>
+      function blockUser() {
+        document.getElementById("overlay").style.visibility = "visible";
+      }
+      function unblockCursor() {
+        document.getElementById("overlay").style.visibility = "hidden";
+      }
+    </script>
+  </body>
+</html>
