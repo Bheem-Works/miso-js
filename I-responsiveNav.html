@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miso responsive</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        height: 50vh;
+        font-family: sans-serif;
+      }
+      nav {
+        display: flex;
+        padding: 30px;
+        background-color: purple;
+        justify-content: space-between;
+        position: relative;
+      }
+      nav ul {
+        display: flex;
+        gap: 30px;
+        margin-right: 1rem;
+        align-items: center;
+      }
+      nav ul li {
+        list-style: none;
+        font-size: 20px;
+        font-weight: 500;
+        color: black;
+        text-transform: uppercase;
+      }
+      #icon {
+        display: none;
+      }
+      #icon i {
+        font-size: 30px;
+        font-weight: 600;
+        color: white;
+      }
+      @media (max-width: 600px) {
+        nav ul {
+          margin: 0;
+          position: absolute;
+          top: 70px;
+          right: 0;
+          left: 0;
+          text-align: center;
+          flex-direction: column;
+          gap: 0;
+          background-color: orange;
+          overflow: hidden;
+          max-height: 0;
+        }
+        nav li {
+          padding: 15px;
+          /* padding-top: 0; */
+        }
+        #icon {
+          display: block;
+        }
+        #misoList {
+          transition: all 0.5s ease-in-out;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div id="logo">Miso</div>
+      <ul id="misoList">
+        <li>Miso</li>
+        <li>Miso</li>
+        <li>Miso</li>
+        <li>Miso</li>
+      </ul>
+      <div id="icon">
+        <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+      </div>
+    </nav>
+
+    <script>
+      let misoList = document.getElementById("misoList");
+      misoList.style.maxHeight = "0px";
+      function toggleMenu() {
+        if (misoList.style.maxHeight == "0px") {
+          misoList.style.maxHeight = "300px";
+        } else {
+          console.log("running");
+          misoList.style.maxHeight = "0px";
+        }
+      }
+    </script>
+  </body>
+</html>
