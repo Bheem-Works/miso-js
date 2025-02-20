@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Practice</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        justify-content: center;
+      }
+      nav {
+        background-color: purple;
+        color: white;
+        padding: 20px;
+        margin: 0;
+        margin-bottom: 3rem;
+      }
+      form {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      form input {
+        color: gray;
+        font-size: 20px;
+      }
+      .btn {
+        border: none;
+        background-color: gray;
+        color: white;
+        padding: 10px;
+        border-radius: 7px;
+      }
+      .li-item li {
+        /* background-color: purple; */
+        font-size: 20px;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        list-style: none;
+        text-transform: uppercase;
+        font-weight: 400;
+        padding: 20px;
+        color: white;
+        background-color: orange;
+        /* color:white; */
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+      <h1>Miso</h1>
+    </nav>
+    <form action="#">
+      <input type="text" placeholder="Search miso food" />
+      <button class="btn" value="click me">Submit</button>
+    </form>
+    <div class="li-item">
+      <ul>
+        <li>Miso</li>
+        <li>Miso</li>
+        <li>Miso</li>
+        <li>Miso</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // CHANGING THE INPUT VALUE OF THE INPUT AND THE BUTTONS
+    // const button = document.querySelector('.btn');
+    // button.innerText='ohayao';
+
+    //CHANGING THE VALUE OF THE INPUT FIELD 
+        // const input = document.querySelector('input');
+        // input.value=" Hello Miso";
+
+    // console.log(document);
+    // console.log(document.head);
+    // const head= document.title;
+    // console.log(head[0]);
+
+    // let nav = document.getElementById('nav');
+    // let ji = nav.innerText = "miso is soo cool";
+
+    // const tag = document.getElementsByTagName("h1")[0];
+    // const man = tag.style.color='red';
+
+    //  CHANGING THE BACKGROUND COLOR BY USING THE PSEUDO CLASS IN THE VENILLA JAVASCRIPT
+    // let evenItems = document.querySelectorAll(".li-item li:nth-child(even)");
+
+    // // Apply background color to all even <li> elements
+    // evenItems.forEach((li) => {
+    //   li.style.backgroundColor = "lightblue";
+    // });
+  </script>
+</html>
