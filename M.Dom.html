@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handlers Demo</title>
+    <style>
+        #eventBox {
+            width: 300px;
+            height: 200px;
+            background-color: #e0e0e0;
+            border: 2px solid #333;
+            margin: 20px;
+            padding: 20px;
+        }
+        #output {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 200px;
+            /* display: none; */
+        }
+    </style>
+</head>
+<body>
+    <div id="eventBox">Interact with this box</div>
+    <div id="output">Events will be logged here...</div>
+
+    <script>
+        const eventBox = document.getElementById('eventBox');
+        const output = document.getElementById('output');
+
+        // Function to log events
+        function logEvent(eventName, e) {
+            const message = `${eventName}: ${new Date().toLocaleTimeString()}`;
+            output.innerHTML = message + '<br>' + output.innerHTML;
+            console.log(eventName, e);
+        }
+
+        // Mouse Events
+        eventBox.addEventListener('click', (e) => logEvent('Click', e));
+        eventBox.addEventListener('dblclick', (e) => logEvent('Double Click', e));
+        eventBox.addEventListener('mousedown', (e) => logEvent('Mouse Down', e));
+        eventBox.addEventListener('mouseup', (e) => logEvent('Mouse Up', e));
+        eventBox.addEventListener('mouseover', (e) => logEvent('Mouse Over', e));
+        eventBox.addEventListener('mouseout', (e) => logEvent('Mouse Out', e));
+        eventBox.addEventListener('mousemove', (e) => logEvent(`Mouse Move (X: ${e.offsetX}, Y: ${e.offsetY})`, e));
+        eventBox.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            logEvent('Right Click', e);
+        });
+
+        // Keyboard Events (on document)
+        // document.addEventListener('keydown', (e) => {
+        //     logEvent(`Key Down: ${e.key} (Code: ${e.code})`, e);
+        // });
+        // document.addEventListener('keyup', (e) => {
+        //     logEvent(`Key Up: ${e.key} (Code: ${e.code})`, e);
+        // });
+        // document.addEventListener('keypress', (e) => {
+        //     logEvent(`Key Press: ${e.key} (Code: ${e.code})`, e);
+        // });
+
+        // Focus Events
+        eventBox.addEventListener('focus', (e) => logEvent('Focus', e));
+        eventBox.addEventListener('blur', (e) => logEvent('Blur', e));
+
+        // Make the div focusable
+        eventBox.setAttribute('tabindex', '0');
+    </script>
+</body>
+</html>
