@@ -22,3 +22,4 @@ function addItem(e) {
 
   itemsLi.appendChild(li);
 }
+ 
