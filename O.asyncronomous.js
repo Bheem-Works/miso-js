@@ -77,14 +77,15 @@
     function hkHotel(){
     return new Promise((resolve,reject) =>{
         let orderTime = Date.now();
-        let deliveryTime = Math.floor(Math.random()*5000) + 1000;
-
-        let timeLimit = 3000;
+        let deliveryTime = Math.floor(Math.random()*500) + 1000;
+        console.log(deliveryTime);
+        let timeLimit = 2000;
 
         console.log(`Order placed. Estimated delivery time ${deliveryTime/100} Seconds`);
         setTimeout(() => {
             let currentTime = Date.now();
             let timeTaken = currentTime - orderTime;
+            
 
             if(timeTaken <= timeLimit) {
                 resolve(`Order arrived on time in ${timeTaken/1000} seconds!`);
