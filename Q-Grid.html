@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Website Template</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Grid Container */
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "header header "
+                "sidebar content"
+                "footer footer";
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: 80px auto 60px;
+            height: 100vh;
+        }
+
+        /* Responsive for small screens */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-areas: 
+                    "header"
+                    "sidebar"
+                    "content"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: 80px auto 1fr 60px;
+            }
+        }
+
+        /* Header */
+        .header {
+            grid-area: header;
+            background: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            grid-area: sidebar;
+            background: #444;
+            color: white;
+            padding: 20px;
+        }
+
+        /* Main Content */
+        .content {
+            grid-area: content;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        /* Footer */
+        .footer {
+            grid-area: footer;
+            background: #222;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">Header</div>
+        <div class="sidebar">Sidebar Menu</div>
+        <div class="content">
+            <h2>Main Content</h2>
+            <p>This is a simple responsive website template using CSS Grid.</p>
+        </div>
+        <div class="footer">Footer</div>
+    </div>
+
+</body>
+</html>
