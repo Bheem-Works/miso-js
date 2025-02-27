@@ -17,7 +17,6 @@
         console.log('Video Information:', data);
     });
 
-
-
-
     // how to import many things from the api plus do the bro code video and try to do pokemon fetch by your self  
+
+
