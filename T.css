@@ -1,0 +1,44 @@
+
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$text-color: white;
+$font-stack: Arial, sans-serif;
+
+/* // Mixin for reusable button styles */
+@mixin button-style($bg-color) {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: $bg-color;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background: darken($bg-color, 10%);
+  }
+}
+
+/* // Apply styles */
+body {
+  background: $primary-color;
+  color: $text-color;
+  font-family: $font-stack;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* // Button styles using the mixin */
+button {
+  @include button-style($secondary-color);
+}

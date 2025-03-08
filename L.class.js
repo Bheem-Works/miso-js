@@ -3,7 +3,7 @@
 class A {
     constructor (food,price) {
         this.food = food;
-        this.price = price;
+        this.price = price;asfd
     }
     likes () {
         return`Miso Likes { ${this.food} } soo much. But the price is ${this.price}`;
@@ -17,3 +17,6 @@ console.log(c.likes());
 console.log(b.likes());
 
 
+function name () {
+    console.log("you are not ")
+}
