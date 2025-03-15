@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Embed Hover Preview</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    
+    .video-card {
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    
+    .video-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .thumbnail-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      overflow: hidden;
+      background-color: #000;
+    }
+    
+    .thumbnail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s;
+      z-index: 1;
+    }
+    
+    .embed-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    .progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background-color: red;
+      transition: width 0.3s linear;
+      z-index: 2;
+    }
+    
+    .video-duration {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 2px 4px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: bold;
+      z-index: 2;
+    }
+    
+    .video-info {
+      padding: 12px;
+    }
+    
+    .video-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 16px;
+      line-height: 1.2;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .video-meta {
+      font-size: 14px;
+      color: #606060;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="video-card" data-video-id="dQw4w9WgXcQ">
+      <div class="thumbnail-container">
+        <img src="/api/placeholder/400/224?text=Video%201" alt="Video thumbnail" class="thumbnail">
+        <div class="embed-container"></div>
+        <div class="video-duration">3:33</div>
+        <div class="progress-bar"></div>
+      </div>
+      <div class="video-info">
+        <h3 class="video-title">Building an Advanced YouTube Video Preview Component</h3>
+        <div class="video-meta">154K views • 2 months ago</div>
+      </div>
+    </div>
+    
+    <div class="video-card" data-video-id="9bZkp7q19f0">
+      <div class="thumbnail-container">
+        <img src="/api/placeholder/400/224?text=Video%202" alt="Video thumbnail" class="thumbnail">
+        <div class="embed-container"></div>
+        <div class="video-duration">4:12</div>
+        <div class="progress-bar"></div>
+      </div>
+      <div class="video-info">
+        <h3 class="video-title">Advanced CSS Animation Techniques for Modern Web Applications</h3>
+        <div class="video-meta">428K views • 6 months ago</div>
+      </div>
+    </div>
+    
+    <div class="video-card" data-video-id="kJQP7kiw5Fk">
+      <div class="thumbnail-container">
+        <img src="/api/placeholder/400/224?text=Video%203" alt="Video thumbnail" class="thumbnail">
+        <div class="embed-container"></div>
+        <div class="video-duration">4:44</div>
+        <div class="progress-bar"></div>
+      </div>
+      <div class="video-info">
+        <h3 class="video-title">5 JavaScript Tricks That Will Make Your Code More Efficient</h3>
+        <div class="video-meta">1.2M views • 3 weeks ago</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load YouTube API
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    // YouTube API will call this function when ready
+    let players = {};
+    
+    function onYouTubeIframeAPIReady() {
+      document.querySelectorAll('.video-card').forEach(card => {
+        const videoId = card.getAttribute('data-video-id');
+        const embedContainer = card.querySelector('.embed-container');
+        const videoCardId = `player-${videoId}`;
+        
+        // Create an element for the player
+        const playerElement = document.createElement('div');
+        playerElement.id = videoCardId;
+        embedContainer.appendChild(playerElement);
+        
+        // Create the YouTube player
+        players[videoCardId] = new YT.Player(videoCardId, {
+          videoId: videoId,
+          playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'mute': 1,
+            'playsinline': 1,
+            'rel': 0,
+            'showinfo': 0,
+            'modestbranding': 1,
+            'enablejsapi': 1,
+            'origin': window.location.origin
+          },
+          events: {
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      });
+    }
+    
+    function onPlayerStateChange(event) {
+      // Handle player state changes if needed
+      if (event.data === YT.PlayerState.ENDED) {
+        // Video ended - could reset the progress bar or handle other cleanup
+        const playerElement = event.target.getIframe();
+        const videoCard = playerElement.closest('.video-card');
+        const thumbnail = videoCard.querySelector('.thumbnail');
+        const progressBar = videoCard.querySelector('.progress-bar');
+        
+        thumbnail.style.opacity = '1';
+        progressBar.style.width = '0';
+        progressBar.style.transition = 'none';
+      }
+    }
+    
+    // Set up hover behavior once DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        setupHoverBehavior();
+      }, 1000); // Give time for YT API to load
+    });
+    
+    function setupHoverBehavior() {
+      document.querySelectorAll('.video-card').forEach(card => {
+        const thumbnail = card.querySelector('.thumbnail');
+        const progressBar = card.querySelector('.progress-bar');
+        const videoId = card.getAttribute('data-video-id');
+        const playerId = `player-${videoId}`;
+        let previewTimer;
+        
+        // Start preview on hover
+        card.addEventListener('mouseenter', () => {
+          const player = players[playerId];
+          if (!player || typeof player.playVideo !== 'function') return;
+          
+          // Hide thumbnail to reveal video
+          thumbnail.style.opacity = '0';
+          
+          // Start video from beginning
+          player.seekTo(0);
+          player.playVideo();
+          
+          // Start progress bar animation
+          const duration = getDurationForVideo(videoId); // In seconds
+          progressBar.style.width = '0';
+          progressBar.style.width = '100%';
+          progressBar.style.transition = `width ${duration * 1000}ms linear`;
+          
+          // Set timer to stop preview after preview duration
+          previewTimer = setTimeout(() => {
+            player.pauseVideo();
+            thumbnail.style.opacity = '1';
+            progressBar.style.width = '0';
+            progressBar.style.transition = 'none';
+          }, duration * 1000);
+        });
+        
+        // Stop preview when mouse leaves
+        card.addEventListener('mouseleave', () => {
+          const player = players[playerId];
+          if (!player || typeof player.pauseVideo !== 'function') return;
+          
+          clearTimeout(previewTimer);
+          player.pauseVideo();
+          thumbnail.style.opacity = '1';
+          progressBar.style.width = '0';
+          progressBar.style.transition = 'none';
+        });
+      });
+    }
+    
+    // Hardcoded durations for the example videos (in seconds)
+    // In a real implementation, you would get these from your backend
+    function getDurationForVideo(videoId) {
+      const durations = {
+        'dQw4w9WgXcQ': 8, // We'll use 8 seconds for preview instead of full length
+        '9bZkp7q19f0': 8,
+        'kJQP7kiw5Fk': 8
+      };
+      return durations[videoId] || 8; // Default to 8 seconds if not found
+    }
+  </script>
+</body>
+</html>
