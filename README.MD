@@ -84,4 +84,5 @@ This document would be perfect for sharing your implementation with others or fo
 
 
 
-# 
+# (Css Animation) Also by using the Javascript.
+

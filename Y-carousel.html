@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            min-height:100vh;
+            padding: 0;
+        }
+        .carousel{
+            overflow:hidden;
+            max-width: 500px;
+            max-height: 500px;
+        }
+        .carousel-img{
+            display:flex;
+            transition:transform 0.3s all linear;
+            transform:translateX(0);
+        }
+        img{
+            object-fit: cover;
+            height:500px;
+            width:500px;
+        }
+        h3{
+            color:green;
+            font-size:40px;
+            display:flex;
+            margin:0;
+        }
+        </style>
+</head>
+<body>
+    <!-- <h3>Carousel of cats -->
+
+    </h3>
+    <div class="carousel">
+        <div class="carousel-img" id="imgs">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/1200px-Cat_August_2010-4.jpg" alt="">
+            <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2014/11/13/14/Cat.jpg" alt="">
+            <img src="https://static1.squarespace.com/static/66ec3b49803ab81bf84f89e4/66ec3b69bf61a73d71744826/66eca14ee7ad767297ce31d4/1734296092801/?format=1500w" alt="">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Jo5Ko4ZXsjGRoZ0rNrO8AK9fFQydseLj8hg3ljiZMMCKAu-Q9GbIMeJuI-xXM79Xgdw&usqp=CAU" alt="">
+        </div>
+    </div>
+
+
+    <script>
+        const imgs = document.getElementById('imgs');
+        const img = document.querySelectorAll('#imgs img');
+        let index = 0;
+        console.log(index);
+
+        const firstClone = img[0].cloneNode(true);
+        imgs.appendChild(firstClone);
+        console.log(firstClone)
+
+        function run() {
+            index++;
+            imgs.style.transition = 'transform 0.3s linear';
+            imgs.style.transform = `translateX(${-index * 500}px)`
+
+            if(index>= img.length) {
+                setTimeout(()=>{
+                    imgs.style.transition = 'none';
+                    index = 0;
+                    imgs.style.transform = 'translateX(0px)';
+                },300)
+            }
+        }
+        setInterval(run,2000);
+    </script>
+</body>
+</html>
